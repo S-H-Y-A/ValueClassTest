@@ -13,7 +13,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.s_h_y_a.valueClassTest.ui.theme.ValueClassTestTheme
 
 @JvmInline
-value class Message(val text: String)
+value class Message(val text: String) {
+    fun asQuote() = "「$this」です。"
+}
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +37,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: Message = Message("Hello Android"), modifier: Modifier = Modifier) {
     Text(
-        text = name.text,
+        text = name.asQuote(),
         modifier = modifier
     )
 }
